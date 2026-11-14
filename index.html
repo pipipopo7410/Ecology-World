@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="theme-color" content="#d3e9ef">
+  <meta name="description" content="可自由探索的國中生態系方塊世界——第一階段世界模型">
+  <title>生態世界｜方塊大陸 v0.1</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <canvas id="world" aria-label="3D 方塊生態世界，可使用鍵盤或觸控探索"></canvas>
+  <header class="topbar" aria-label="世界控制列">
+    <div class="brand"><span class="logo">🌍</span><span>生態世界 <small>v0.1</small></span></div>
+    <div class="actions">
+      <button id="zonesBtn" type="button" title="選擇生態區域" aria-expanded="false">🧭 <span class="optional">生態區</span></button>
+      <button id="mapBtn" type="button" title="顯示或隱藏地圖">🗺️</button>
+      <button id="zoomIn" type="button" title="放大">＋</button>
+      <button id="zoomOut" type="button" title="縮小">－</button>
+      <button id="homeBtn" type="button" title="回到初始位置">⌂</button>
+    </div>
+  </header>
+  <section id="place" class="place" aria-live="polite"><span id="placeIcon">🍂</span><div><strong id="placeName">生態世界</strong><small id="placeHint">探索各種生態環境</small></div></section>
+  <aside id="zonePanel" class="zone-panel" hidden aria-label="生態區選擇">
+    <div class="panel-head"><b>前往生態區</b><button id="closeZones" aria-label="關閉選單" type="button">✕</button></div>
+    <div id="zoneList" class="zone-list"></div>
+  </aside>
+  <aside id="mapPanel" class="map-panel" aria-label="世界縮圖">
+    <div class="map-title"><span>世界地圖</span><small>點選位置快速前往</small></div>
+    <canvas id="minimap" width="300" height="198" aria-label="世界平面圖，點選可以移動"></canvas>
+  </aside>
+  <section id="speciesCard" class="species-card" hidden aria-live="polite">
+    <button type="button" id="closeSpecies" class="close-card" aria-label="關閉">✕</button>
+    <div class="species-symbol">🐾</div><div><strong id="speciesName"></strong><small id="speciesArea"></small></div>
+  </section>
+  <div id="help" class="help">拖曳旋轉視角 · 點地面前往 · 點生物觀察 <span class="desktop">· WASD／方向鍵移動 · 滾輪縮放</span></div>
+  <div id="loading" class="loading"><div><span class="loader-icon">🌏</span><b>正在建立生態世界</b><small>地形、植物與動物模型載入中</small></div></div>
+  <div id="error" class="error" hidden><div><b>目前無法顯示 3D 世界</b><p id="errorText">請使用支援 WebGL 的新版 Chrome、Safari 或 Edge。</p></div></div>
+  <script src="./vendor/three.min.js"></script>
+  <script src="./js/world-data.js"></script>
+  <script src="./js/world-engine.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+</html>
